@@ -8,7 +8,10 @@ from prometheus_client.metrics_core import CounterMetricFamily
 
 class InternetStats(object):
   def __init__(self, registry=REGISTRY):
-    self.netgear = Netgear(password=os.environ.get("NETGEAR_EXPORTER_ADMIN_PASSWORD", ""))
+    self.netgear = Netgear(
+      host = os.environ.get("NETGEAR_EXPORTER_HOST", None),
+      password = os.environ.get("NETGEAR_EXPORTER_ADMIN_PASSWORD", None)
+    )
     if registry:
       registry.register(self)
 
