@@ -1,4 +1,4 @@
-from python as base
+from python:3.9-slim as base
 
 ENV PYTHONUNBUFFERED=1
 
@@ -36,7 +36,7 @@ RUN chown www:www /app
 USER www
 
 COPY --chown=www:www requirements.txt /app/requirements.txt
-RUN pip install -r requirements.txt
+RUN pip install prometheus-client pynetgear
 
 COPY --chown=www:www . /app
 
